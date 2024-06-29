@@ -26,7 +26,7 @@ const CodeEditor = () => {
   useEffect(() => {
     const adjustHeight = () => {
       if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = "auto";
         textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
       }
     };
@@ -44,8 +44,8 @@ const CodeEditor = () => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             ref={preRef}
-            className={`${className} w-full p-4 m-0 overflow-auto`}
-            style={{ ...style, minHeight: '24rem' }}
+            className={`${className} w-full p-4 m-0 overflow-auto whitespace-pre-wrap break-words`}
+            style={{ ...style, minHeight: "24rem" }}
           >
             {tokens.map((line, i) => (
               <div
@@ -69,9 +69,9 @@ const CodeEditor = () => {
         value={code}
         onChange={handleChange}
         onScroll={handleScroll}
-        className="absolute top-0 left-0 w-full h-full p-4 m-0 bg-transparent resize-none outline-none font-mono text-transparent caret-white overflow-auto"
+        className="absolute top-0 left-0 w-full h-full p-4 m-0 bg-transparent resize-none outline-none font-mono text-transparent caret-white overflow-auto whitespace-pre-wrap break-words"
         spellCheck="false"
-        style={{ minHeight: '24rem' }}
+        style={{ minHeight: "24rem" }}
       />
     </div>
   );
