@@ -1,14 +1,19 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Highlight, themes } from "prism-react-renderer";
+import { Highlight, PrismTheme, themes } from "prism-react-renderer";
 
-const CodeEditor = () => {
+type Props = {
+  lang: string;
+  theme: PrismTheme;
+};
+
+const CodeEditor = ({ lang, theme }: Props) => {
   const [code, setCode] = useState(`function sayHi(name) {
-    console.log("Hello, " + name + "!");
-  }
+  console.log("Hello, " + name + "!");
+}
 
-  sayHi("World");`);
+sayHi("World");`);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
@@ -21,6 +26,13 @@ const CodeEditor = () => {
     if (preRef.current) {
       preRef.current.scrollTop = e.currentTarget.scrollTop;
     }
+  };
+
+  const resetCode = () => {
+    setCode(`function sayHi(name) {
+  console.log("Hello, " + name + "!");
+}`);
+
   };
 
   useEffect(() => {
@@ -41,9 +53,9 @@ const CodeEditor = () => {
   return (
     <div className="relative w-full max-w-7xl mx-auto border border-gray-300 rounded-lg overflow-hidden">
       <Highlight
-        theme={themes.dracula}
+        theme={theme}
         code={code}
-        language="javascript"
+        language={lang}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
