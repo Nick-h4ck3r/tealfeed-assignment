@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Highlight, PrismTheme, themes } from "prism-react-renderer";
+import { Highlight, PrismTheme } from "prism-react-renderer";
 
 type Props = {
   lang: string;
@@ -26,13 +26,6 @@ sayHi("World");`);
     if (preRef.current) {
       preRef.current.scrollTop = e.currentTarget.scrollTop;
     }
-  };
-
-  const resetCode = () => {
-    setCode(`function sayHi(name) {
-  console.log("Hello, " + name + "!");
-}`);
-
   };
 
   useEffect(() => {
