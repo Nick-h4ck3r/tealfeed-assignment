@@ -43,7 +43,7 @@ export default function Home() {
         Realtime Code Editor with NextJs and Prism{" "}
       </h1>
 
-      <div className="flex gap-4 mb-2 items-center">
+      <div className="flex flex-col md:flex-row gap-4 mb-2 items-center max-w-5xl mx-auto">
         <SelectTheme onValueChange={setTheme} />
         <SelectLanguage onValueChange={setLang} />
       </div>
